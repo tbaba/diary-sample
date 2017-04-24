@@ -1,6 +1,8 @@
 .articles
   %h1 記事一覧
 
+  = link_to '記事を作成する', new_article_path
+
   - @articles.each do |article|
     %article{ class: dom_id(article) }
       %header

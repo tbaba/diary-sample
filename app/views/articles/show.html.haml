@@ -1,0 +1,10 @@
+.article{ id: dom_id(@article) }
+  %h1= @article.title
+
+  %section
+    = simple_format @article.body
+
+  %footer
+    %time= l @article.created_at
+
+= link_to '一覧', articles_path
