@@ -36,4 +36,23 @@ RSpec.describe "Articles", type: :request do
       expect(article.title).to eq attributes[:title]
     end
   end
+
+  describe 'PUT #update' do
+    let!(:old_title) { '古いタイトル' }
+    let(:new_title) { '新しいタイトル' }
+    let(:article) { FactoryGirl.create :article, title: old_title }
+
+    before do
+      put article_path(article), params: { article: { title: new_title } }
+    end
+
+    it "redirects to a page of the article" do
+      expect(response).to redirect_to article_path(article)
+    end
+
+    it "updates the title of the article" do
+      expect(article.reload.title).not_to eq old_title
+      expect(article.reload.title).to eq new_title
+    end
+  end
 end

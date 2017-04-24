@@ -1,5 +1,5 @@
-.articles-new
-  %h1 記事の作成
+.articles-edit
+  %h1 記事の更新
 
   = form_for @article do |f|
     = render 'form', f: f
@@ -8,3 +8,4 @@
       = f.button '保存', type: :submit
 
 = link_to '一覧', articles_path
+

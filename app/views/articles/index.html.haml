@@ -6,7 +6,7 @@
   - @articles.each do |article|
     %article{ class: dom_id(article) }
       %header
-        %h2= article.title
+        %h2= link_to article.title, article
       %section
         = simple_format article.body
       %footer

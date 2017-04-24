@@ -5,6 +5,9 @@
     = simple_format @article.body
 
   %footer
-    %time= l @article.created_at
+    %ul
+      %li= link_to '編集', edit_article_path(@article)
+      %li
+        %time= l @article.created_at
 
 = link_to '一覧', articles_path
