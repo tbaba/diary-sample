@@ -55,4 +55,20 @@ RSpec.describe "Articles", type: :request do
       expect(article.reload.title).to eq new_title
     end
   end
+
+  describe 'DELETE #destroy' do
+    let(:article) { FactoryGirl.create :article }
+
+    before do
+      delete article_path(article)
+    end
+
+    it "redirects to list of articles" do
+      expect(response).to redirect_to articles_path
+    end
+
+    it "deletes the article" do
+      expect(Article.count).to be_zero
+    end
+  end
 end
