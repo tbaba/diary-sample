@@ -19,4 +19,21 @@ RSpec.describe "Articles", type: :request do
       expect(response.body).to include old_article.body
     end
   end
+
+  describe 'POST #create' do
+    let(:attributes) { FactoryGirl.attributes_for :article }
+    let(:article) { Article.last }
+
+    before do
+      post articles_path, params: { article: attributes }
+    end
+
+    it "redirects to a page of the article" do
+      expect(response).to redirect_to article_path(article)
+    end
+
+    it "generates new Article" do
+      expect(article.title).to eq attributes[:title]
+    end
+  end
 end

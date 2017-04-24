@@ -1,0 +1,21 @@
+.articles-new
+  %h1 記事の作成
+
+  = form_for @article do |f|
+    - if @article.errors.any?
+      .alert
+        %h2 #{@article.errors.count}個のエラーが見つかりました
+        %ul
+          - @article.errors.full_messages.each do |error|
+            %li= error
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :body
+      = f.text_area :body
+
+    .action
+      = f.button '保存', type: :submit
+
+= link_to '一覧', articles_path
