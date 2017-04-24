@@ -4,7 +4,7 @@
   - @articles.each do |article|
     %article{ class: dom_id(article) }
       %header
-        h2= article.title
+        %h2= article.title
       %section
         = simple_format article.body
       %footer
